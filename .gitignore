@@ -1,0 +1,7 @@
+greetingApp/.gradle/
+greetingApp/.idea/
+greetingApp/build.gradle
+greetingApp/build/
+greetingApp/gradle/
+greetingApp/gradlew
+greetingApp/gradlew.bat
