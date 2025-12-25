@@ -12,4 +12,11 @@ kafkaStreamsOperators/build/
 kafkaStreamsOperators/gradle/
 kafkaStreamsOperators/gradlew
 kafkaStreamsOperators/gradlew.bat
+kafkaStreamsMergeOperators/.gradle/
+kafkaStreamsMergeOperators/.idea/
+kafkaStreamsMergeOperators/build.gradle
+kafkaStreamsMergeOperators/build/
+kafkaStreamsMergeOperators/gradle/
+kafkaStreamsMergeOperators/gradlew
+kafkaStreamsMergeOperators/gradlew.bat
 
