@@ -2,7 +2,7 @@
 
 This app is going to read from a Kafka topic named Greetings and then perform a stream processing logic and write it to another Kafka topic named Greetings uppercase. 
 
-Just perform the different operators like filter, filterNot, map, mapValues operation and then write it to the Kafka topic.
+Just perform the different operators like filter, filterNot, map, mapValues, flatMap, flatMapValues, peek operation and then write it to the Kafka topic.
 
 <p align="center">
   <img src="src/main/resources/images/project-architecture.png" alt="Description of Project"/>

@@ -1,5 +1,6 @@
 package com.kafka.topology;
 
+import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
@@ -10,7 +11,7 @@ import org.apache.kafka.streams.kstream.Produced;
 
 import java.util.Arrays;
 import java.util.stream.Collectors;
-
+@Slf4j
 public class GreetingsTopology {
 
     //Source Topic Name
@@ -52,7 +53,31 @@ public class GreetingsTopology {
                                             .collect(Collectors.toList());
                                     return keyValueList;
                                 });
-		
+
+        //Build the processing logic - converting the value from lowercase to uppercase
+        //Example to show flatMapValues function usage
+        /*var modifiedStream = greetingsStream
+                .flatMapValues((key,value) -> {
+                    var newValues = Arrays.asList(value.split(""));
+                    var keyValueList = newValues.stream()
+                            .map(String:: toUpperCase)
+                            .collect(Collectors.toList());
+                    return keyValueList;
+                });*/
+
+        //Build the processing logic - converting the value from lowercase to uppercase
+        //Example to show peek function usage
+        /*var modifiedStream = greetingsStream
+                                .filter((key,value) -> value.length() > 5)
+                                .peek((key,value) -> {
+                                    log.info("after filter: key: {}, value: {}", key,value);
+                                })
+                                .mapValues(((readOnlyKey, value) -> value.toUpperCase()))
+                                .peek((key,value) -> {
+                                    key.toUpperCase();
+                                    log.info("after mapValues: key: {}, value: {}", key,value);
+                                });*/
+
         //To print the data in Stream
         modifiedStream.print(Printed.<String, String>toSysOut().withLabel("modifiedStream"));
 
