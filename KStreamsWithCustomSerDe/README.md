@@ -1,4 +1,4 @@
-# Build Custom SerDes for Enhanced Greeting Messages with merge operation
+# Build Custom SerDe for Enhanced Greeting Messages with merge operation
 
 ## What is needed to build a Custom Serde?
  - Serializer

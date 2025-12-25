@@ -1,4 +1,4 @@
-# Build Generic SerDes for any types of Object Messages + merge operation
+# Build Generic SerDe for any types of Object Messages + merge operation
 
 ## What is needed to build a Generic Serde?
  - Serializer
