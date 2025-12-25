@@ -5,11 +5,11 @@ greetingApp/build/
 greetingApp/gradle/
 greetingApp/gradlew
 greetingApp/gradlew.bat
-operators/.gradle/
-operators/.idea/
-operators/build.gradle
-operators/build/
-operators/gradle/
-operators/gradlew
-operators/gradlew.bat
+kafkaStreamsOperators/.gradle/
+kafkaStreamsOperators/.idea/
+kafkaStreamsOperators/build.gradle
+kafkaStreamsOperators/build/
+kafkaStreamsOperators/gradle/
+kafkaStreamsOperators/gradlew
+kafkaStreamsOperators/gradlew.bat
 
