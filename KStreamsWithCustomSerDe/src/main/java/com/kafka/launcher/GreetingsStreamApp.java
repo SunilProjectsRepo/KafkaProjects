@@ -29,7 +29,7 @@ public class GreetingsStreamApp {
         prop.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
 
         //Create the Topics
-        createTopics(prop, List.of(GreetingsTopology.GREETINGS,GreetingsTopology.GREETINGS_UPPERCASE, GreetingsTopology.GREETINGS_SPANISH));
+        createTopics(prop, List.of(GreetingsTopology.GREETINGS,GreetingsTopology.GREETINGS_CUSTOM_SERDE, GreetingsTopology.GREETINGS_SPANISH));
         //Get the Topology
         var greetingsTopology = GreetingsTopology.buildTopology();
         //Create the instance of Kafka Streams

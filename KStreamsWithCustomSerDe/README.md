@@ -1,18 +1,14 @@
-# Set up Greeting App with providing Default Serializer/Deserializer Using Application Configuration + Merge Operators
+# Build Custom SerDes for Enhanced Greeting Messages with merge operation
 
-This app perform the merge operation and then convert the merged value to uppercase and write it to the Kafka topic.
-This operation combines two independent Kafka Streams into a single Kafka Stream.
+## What is needed to build a Custom Serde?
+ - Serializer
+ - DeSerializer
+ - Serde that holds the Serializer and DeSerializer
 
-<p align="center">
-  <img src="src/main/resources/images/merge-architecture.png" alt="Description of Project"/>
-</p>
 
-Let's say we have two cases streams which are being read from two different topics. And we have a business use case to channel that data that's coming out from these two topics into one single topic. 
-In those kind of scenarios, we can use the merge operator to channel data that's coming from two different topics into one single topic.
-
-We will have 3 topics here - GREETINGS, GREETINGS_SPANISH, GREETINGS_UPPERCASE
-
-We are merging GREETINGS and GREETINGS_SPANISH into GREETINGS_UPPERCASE topic
+We will have 3 topics here:
+GREETINGS, GREETINGS_SPANISH - producer 
+GREETINGS_CUSTOM_SERDE - consumer
 
 
 ## Set up Kafka Environment using Docker
@@ -78,35 +74,30 @@ docker exec -it broker bash
 - Command to consume messages from the Kafka topic.
 
 ```
-kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings_uppercase
+kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings-customserde
 ```
 
 - Command to consume with Key
 
 ```
-kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings_uppercase --from-beginning -property "key.separator= - " --property "print.key=true"
+kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings-customserde --from-beginning -property "key.separator= - " --property "print.key=true"
 ```
 
-#### Producer side - Publish the message in topic - GREETINGS - "gm-goodmrg"
+#### Producer side - Publish the message in topic - GREETINGS and GREETINGS-SPANISH through GreetingMockDataProducer class
 
 <p align="center">
-  <img src="src/main/resources/images/producer_topic1.png" alt="Producer"/>
+  <img src="src/main/resources/images/producer_customserde.png" alt="Producer"/>
 </p>
 
-#### Producer side - Publish the message in topic - GREETINGS-SPANISH - "gm-buenos dias"
+
+#### KStreams App 
 
 <p align="center">
-  <img src="src/main/resources/images/producer_topic2.png" alt="Producer"/>
+  <img src="src/main/resources/images/KStreams_App_with_custom_serde.png" alt="KStreams App Running"/>
 </p>
 
-#### KStreams App - where the map operation with merge is done
+#### Consumer side - consumes the message with key from both topics as Greeting object
 
 <p align="center">
-  <img src="src/main/resources/images/KStreams_App_with_merge.png" alt="KStreams App Running"/>
-</p>
-
-#### Consumer side - consumes the message with key from both topics - "GM - GOODMRG" and "GM - BUENOS DIAS"
-
-<p align="center">
-  <img src="src/main/resources/images/consumer_merge.png" alt="Consumer"/>
+  <img src="src/main/resources/images/consumer_customserde.png" alt="Consumer"/>
 </p>
