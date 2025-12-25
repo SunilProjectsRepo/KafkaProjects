@@ -65,14 +65,21 @@ docker exec -it broker bash
 kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings_uppercase
 ```
 
+#### Producer side - Publish the message - "Good Morning!"
+
 <p align="center">
   <img src="src/main/resources/images/producer.png" alt="Producer"/>
 </p>
 
-<p align="center">
-  <img src="src/main/resources/images/consumer.png" alt="Consumer"/>
-</p>
+
+#### KStreams App - where the uppercase operation is done
 
 <p align="center">
   <img src="src/main/resources/images/KStreams_App.png" alt="KStreams App Running"/>
+</p>
+
+#### Consumer side - consumes the message - "GOOD MORNING!"
+
+<p align="center">
+  <img src="src/main/resources/images/consumer.png" alt="Consumer"/>
 </p>
