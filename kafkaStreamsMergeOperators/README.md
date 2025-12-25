@@ -105,7 +105,7 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings_upper
   <img src="src/main/resources/images/KStreams_App_with_merge.png" alt="KStreams App Running"/>
 </p>
 
-#### Consumer side - consumes the message with key - "GM - GOODMRG" and "GM - BUENOS DIAS"
+#### Consumer side - consumes the message with key from both topics - "GM - GOODMRG" and "GM - BUENOS DIAS"
 
 <p align="center">
   <img src="src/main/resources/images/consumer_merge.png" alt="Consumer"/>
