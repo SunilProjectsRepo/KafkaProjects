@@ -97,3 +97,28 @@ kafka-console-consumer --bootstrap-server localhost:9092 --topic greetings_upper
 <p align="center">
   <img src="src/main/resources/images/consumer_key.png" alt="Consumer"/>
 </p>
+
+### FlatMap Usage
+
+<p align="center">
+  <img src="src/main/resources/images/flatMapUsage.png" alt="FlatMap"/>
+</p>
+
+#### Producer side - Publish the message with key - "gm-Good"
+
+<p align="center">
+  <img src="src/main/resources/images/producer_flatMap.png" alt="Producer"/>
+</p>
+
+
+#### KStreams App - where the map operation with key is done
+
+<p align="center">
+  <img src="src/main/resources/images/KStreams_App_flatMap.png" alt="KStreams App Running"/>
+</p>
+
+#### Consumer side - consumes the message with key 
+
+<p align="center">
+  <img src="src/main/resources/images/consumer_flatMap.png" alt="Consumer"/>
+</p>

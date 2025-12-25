@@ -8,6 +8,9 @@ import org.apache.kafka.streams.kstream.Consumed;
 import org.apache.kafka.streams.kstream.Printed;
 import org.apache.kafka.streams.kstream.Produced;
 
+import java.util.Arrays;
+import java.util.stream.Collectors;
+
 public class GreetingsTopology {
 
     //Source Topic Name
@@ -36,9 +39,19 @@ public class GreetingsTopology {
 								
 		//Build the processing logic - converting the value from lowercase to uppercase
 		//Example to show map function usage
+		/*var modifiedStream = greetingsStream
+								.map((key,value) -> KeyValue.pair(key.toUpperCase(), value.toUpperCase()));*/
+
+        //Build the processing logic - converting the value from lowercase to uppercase
+        //Example to show flatMap function usage
 		var modifiedStream = greetingsStream
-								.map((key,value) -> KeyValue.pair(key.toUpperCase(), value.toUpperCase()));
-		
+								.flatMap((key,value) -> {
+                                    var newValues = Arrays.asList(value.split(""));
+                                    var keyValueList = newValues.stream()
+                                            .map(t -> KeyValue.pair(key.toUpperCase(), t))
+                                            .collect(Collectors.toList());
+                                    return keyValueList;
+                                });
 		
         //To print the data in Stream
         modifiedStream.print(Printed.<String, String>toSysOut().withLabel("modifiedStream"));
