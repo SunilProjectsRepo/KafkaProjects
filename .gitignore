@@ -1,22 +1,24 @@
-greetingApp/.gradle/
-greetingApp/.idea/
-greetingApp/build.gradle
-greetingApp/build/
-greetingApp/gradle/
-greetingApp/gradlew
-greetingApp/gradlew.bat
-kafkaStreamsOperators/.gradle/
-kafkaStreamsOperators/.idea/
-kafkaStreamsOperators/build.gradle
-kafkaStreamsOperators/build/
-kafkaStreamsOperators/gradle/
-kafkaStreamsOperators/gradlew
-kafkaStreamsOperators/gradlew.bat
-kafkaStreamsMergeOperators/.gradle/
-kafkaStreamsMergeOperators/.idea/
-kafkaStreamsMergeOperators/build.gradle
-kafkaStreamsMergeOperators/build/
-kafkaStreamsMergeOperators/gradle/
-kafkaStreamsMergeOperators/gradlew
-kafkaStreamsMergeOperators/gradlew.bat
+# ===== Gradle =====
+.gradle/
+**/build/
 
+# Gradle wrapper (keep these)
+!gradle/wrapper/gradle-wrapper.jar
+!gradle/wrapper/gradle-wrapper.properties
+
+# ===== IntelliJ IDEA =====
+.idea/
+*.iml
+*.iws
+*.ipr
+out/
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
+
+# ===== Logs =====
+*.log
+
+# ===== Environment files =====
+.env
