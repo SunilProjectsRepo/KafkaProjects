@@ -5,6 +5,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.kafka.clients.admin.AdminClient;
 import org.apache.kafka.clients.admin.NewTopic;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
+import org.apache.kafka.common.serialization.Serdes;
 import org.apache.kafka.streams.KafkaStreams;
 import org.apache.kafka.streams.StreamsConfig;
 
@@ -23,6 +24,9 @@ public class GreetingsStreamApp {
         prop.put(StreamsConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");
         // I'm just going to read the records that's available in the Kafka topic. After this application is spun up, it's going to be latest.
         prop.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "latest");
+        //Providing Default Serializer/Deserializer Using Application Configuration
+        prop.put(StreamsConfig.DEFAULT_KEY_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
+        prop.put(StreamsConfig.DEFAULT_VALUE_SERDE_CLASS_CONFIG, Serdes.StringSerde.class);
 
         //Create the Topics
         createTopics(prop, List.of(GreetingsTopology.GREETINGS,GreetingsTopology.GREETINGS_UPPERCASE, GreetingsTopology.GREETINGS_SPANISH));

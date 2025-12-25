@@ -6,6 +6,7 @@ import org.apache.kafka.streams.KeyValue;
 import org.apache.kafka.streams.StreamsBuilder;
 import org.apache.kafka.streams.Topology;
 import org.apache.kafka.streams.kstream.Consumed;
+import org.apache.kafka.streams.kstream.KStream;
 import org.apache.kafka.streams.kstream.Printed;
 import org.apache.kafka.streams.kstream.Produced;
 
@@ -27,16 +28,25 @@ public class GreetingsTopology {
 
         //Add the Source Processor - Pass Kafka Topic from where you want to read the message from. In addition to this, we need to add the key type and value type.
         //This will take care of getting the record from Kafka topic - GREETINGS
-        var greetingsStream = streamsBuilder.stream(GREETINGS,
+       /* var greetingsStream = streamsBuilder.stream(GREETINGS,
                 Consumed.with(Serdes.String(), Serdes.String()));  // this means key is String and value is String
+        */
+
+        //Add the Source Processor
+        //Providing Default Serializer/Deserializer Using Application Configuration
+        KStream<String, String> greetingsStream = streamsBuilder.stream(GREETINGS);
 
         //To print the data in Stream
         greetingsStream.print(Printed.<String, String>toSysOut().withLabel("greetingsStream"));
 
         //Add the Source Processor
         //This will take care of getting the record from Kafka topic - GREETINGS_SPANISH
-        var greetingsSpanishStream = streamsBuilder.stream(GREETINGS_SPANISH,
-                Consumed.with(Serdes.String(), Serdes.String()));
+        /*var greetingsSpanishStream = streamsBuilder.stream(GREETINGS_SPANISH,
+                Consumed.with(Serdes.String(), Serdes.String()));*/
+
+        //Add the Source Processor
+        //Providing Default Serializer/Deserializer Using Application Configuration
+        KStream<String, String> greetingsSpanishStream = streamsBuilder.stream(GREETINGS_SPANISH);
 
         //To print the data in Stream
         greetingsSpanishStream.print(Printed.<String, String>toSysOut().withLabel("greetingsSpanishStream"));
@@ -56,8 +66,12 @@ public class GreetingsTopology {
 
         //Add the Sink Processor - Publish this value to another topic
         //Pass Topic name, key type, value type
-        modifiedStream.to(GREETINGS_UPPERCASE,
-                Produced.with(Serdes.String(), Serdes.String()));
+        /*modifiedStream.to(GREETINGS_UPPERCASE,
+                Produced.with(Serdes.String(), Serdes.String()));*/
+
+        //Add the Sink Processor
+        //Providing Default Serializer/Deserializer Using Application Configuration
+        modifiedStream.to(GREETINGS_UPPERCASE);
 
         //Returns the topology
         return streamsBuilder.build();

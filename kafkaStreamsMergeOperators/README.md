@@ -1,4 +1,4 @@
-# Set up Greeting App + Operators
+# Set up Greeting App with providing Default Serializer/Deserializer Using Application Configuration + Merge Operators
 
 This app perform the merge operation and then convert the merged value to uppercase and write it to the Kafka topic.
 This operation combines two independent Kafka Streams into a single Kafka Stream.
