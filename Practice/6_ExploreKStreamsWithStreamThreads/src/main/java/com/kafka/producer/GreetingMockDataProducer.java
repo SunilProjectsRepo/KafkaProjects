@@ -16,7 +16,7 @@ import static com.kafka.producer.ProducerUtil.publishMessageSync;
 @Slf4j
 public class GreetingMockDataProducer {
 
-    static String GREETINGS = "greetings";
+    static String GREETINGS = "greeting";
 
     public static void main(String[] args) {
         ObjectMapper objectMapper = new ObjectMapper()
